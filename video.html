@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Slideshow with Next Button</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    video {
+      width: 80%;
+      height: auto;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Video Slideshow</h1>
+  
+  <video id="videoPlayer" controls>
+    <source src="video1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <br>
+  
+  <button id="nextButton">Next Video</button>
+
+  <script>
+    // Array of video sources
+    const videos = [
+      'video1.mp4',
+      'video2.mp4',
+      'video3.mp4'
+    ];
+
+    let currentVideoIndex = 0;
+
+    // Function to change the video
+    function changeVideo() {
+      const videoPlayer = document.getElementById('videoPlayer');
+      currentVideoIndex = (currentVideoIndex + 1) % videos.length; // Loop through the videos
+      videoPlayer.src = videos[currentVideoIndex];
+      videoPlayer.load();
+      videoPlayer.play();
+    }
+
+    // Event listener for the "Next Video" button
+    document.getElementById('nextButton').addEventListener('click', changeVideo);
+
+    // Start the first video
+    changeVideo();
+  </script>
+
+</body>
+</html>
